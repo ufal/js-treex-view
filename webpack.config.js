@@ -7,6 +7,9 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     filename: 'js-treex-view.js'
   },
+  externals: {
+    jquery: 'jQuery'
+  },
   module: {
     loaders: [
       {test: /\.less/, loader: 'style!css!autoprefixer!less'},

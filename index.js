@@ -2,11 +2,6 @@ var $ = require('jquery');
 var Treex = require('./lib/Treex');
 var TreeView = require('./lib/TreeView');
 
-// TODO REMOVE
-if (!window.jQuery) {
-  window.$ = window.jQuery = $;
-}
-
 require('./index.less');
 
 $.fn.treexView = function (data) {
