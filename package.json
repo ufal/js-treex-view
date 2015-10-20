@@ -1,0 +1,33 @@
+{
+  "name": "js-treex-view",
+  "version": "1.0.0",
+  "description": "Javascript library for visualizing Treex files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ufal/js-treex-view.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ufal/js-treex-view/issues"
+  },
+  "homepage": "https://github.com/ufal/js-treex-view",
+  "devDependencies": {
+    "autoprefixer-loader": "^3.1.0",
+    "css-loader": "^0.20.2",
+    "d3": "^3.5.6",
+    "html-loader": "^0.3.0",
+    "html-webpack-plugin": "^2",
+    "jquery": "^2.1.4",
+    "json-loader": "^0.5.3",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="treex-view"></div>
+<script>
+    $(function () {
+        $.ajax('/test/test.json').done(function (data) {
+            $('#treex-view').treexView(data);
+        });
+    });
+</script>
+</body>
+</html>
