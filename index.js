@@ -1,22 +1,27 @@
 var $ = require('jquery');
 var Treex = require('./lib/Treex');
 var TreeView = require('./lib/TreeView');
+var Pager = require('./lib/Pager');
 
-require('./index.less');
+var styles = require('./index.less');
 
-$.fn.treexView = function (data) {
+module.exports = $.fn.treexView = function (data) {
   var $this = $(this);
-  var template = $(require('./lib/template.html'));
+  var template = $(require('./lib/template.dot')(styles));
 
   $this.html(template);
 
-  var view = new TreeView(template.find('.treex-view-pane').get(0));
+  var view = new TreeView(template.find('[svg]').get(0));
 
   view.init(Treex.Document.fromJSON(data));
+
+  var pager = new Pager(template.find('[pagination]').get(0));
+  pager.init(view);
+
   view.onNodeSelect(function (node) {
     console.log(node);
   });
 
-  view.description(template.find('.treex-view-sentence').get(0));
+  view.description(template.find('[sentence]').get(0));
   view.drawBundle();
 };

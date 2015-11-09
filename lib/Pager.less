@@ -1,0 +1,74 @@
+// Inspired by https://raw.githubusercontent.com/twbs/bootstrap/master/less/pagination.less
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+
+  margin: 10px 0;
+}
+
+.pages {
+  display: inline-block;
+  padding-left: 0;
+  border-radius: 4px;
+  margin: 0 5px;
+
+  > li {
+    display: inline; // Remove list-style and block-level defaults
+    > span {
+      position: relative;
+      float: left; // Collapse white-space
+      padding: 6px 12px;
+      line-height: 20px;
+      text-decoration: none;
+      color: #337ab7;
+      background-color: #fff;;
+      border: 1px solid #ddd;
+      margin-left: -1px;
+      cursor: pointer;
+    }
+    &:first-child {
+      > span {
+        margin-left: 0;
+      }
+    }
+  }
+
+  > li > span {
+    &:hover,
+    &:focus {
+      z-index: 2;
+      color: #23527c;
+      background-color: #eee;
+      border-color: #ddd;
+    }
+  }
+
+  > .active > span {
+    &,
+    &:hover,
+    &:focus {
+      z-index: 3;
+      color: #23527c;
+      background-color: #eee;
+      border-color: #ddd;
+      cursor: default;
+    }
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #23527c;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #337ab7;
+    background-color: #eee;
+    border-color: #ddd;
+  }
+}

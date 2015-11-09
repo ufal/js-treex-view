@@ -1,5 +1,4 @@
-
-.treex-view-container {
+.container {
   font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
   font-size: 14px;
   line-height: 20px;
@@ -7,35 +6,18 @@
   background-color: #fff;
 }
 
-.treex-view-sentence .label {
-  display: inline-block;
-  padding: 2px 4px;
-  font-size: 12px;
-  border-radius: 3px;
-  font-weight: 700;
-  line-height: 16px;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
-  white-space: nowrap;
-  vertical-align: top;
-  background-color: #999;
+.pane {
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
-.treeview-gfx {
+.attributes {
+  display: none;
+}
+
+.svg {
   overflow: auto;
   min-height: 600px;
-}
-
-.highlight {
-  background-color: yellow;
-}
-
-.mouse-highlight:hover {
-  background-color: #ffa;
-  cursor: pointer;
-}
-
-.treex-view-pane .node {
-  cursor: pointer;
-  user-select: none;
 }

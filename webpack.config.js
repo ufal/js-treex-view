@@ -11,11 +11,21 @@ module.exports = {
     jquery: 'jQuery'
   },
   module: {
+    postLoaders: [{
+      test: /\.js$/,
+      exclude: /\/(node_modules|bower_components)\//,
+      loader: 'autopolyfiller',
+      query: {browsers: ['last 2 versions', 'ie >= 9']}
+    }],
     loaders: [
-      {test: /\.less/, loader: 'style!css!autoprefixer!less'},
+      {test: /\.less/, loader: 'style!css?localIdentName=_[hash:base64:5]!postcss-loader!autoprefixer!less'},
+      {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
+      {test: /\.dot/, loader: 'dot-loader'},
       {test: /\.html/, loader: 'html'}
     ]
   },
+  // Provide the Local Scope plugin to postcss-loader:
+  postcss: [ require('postcss-local-scope') ],
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
