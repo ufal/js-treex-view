@@ -2,7 +2,7 @@
     <div pagination></div>
     <div sentence></div>
     <div class="{{= it.pane}}">
-      <div class="{{= it.attributes}}"></div>
+      <div attributes></div>
       <div svg class="{{= it.svg}}"></div>
     </div>
 </div>

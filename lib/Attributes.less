@@ -1,0 +1,85 @@
+.attributes {
+  width: 0;
+  display: none;
+  font-size: 11px;
+  padding: 5px 0 0 0;
+  margin: 5px 5px 0 0;
+  border-top: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+
+  .table table {
+    width: 100%;
+    max-width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+    tbody > tr > td {
+      border: 1px solid #ddd;
+      border-right: none;
+      padding: 1px 3px;
+      & > table {
+        border: none;
+        margin-left: 5%;
+        margin-bottom: -1px;
+        width: 95%;
+        max-width: 95%;
+      }
+    }
+  }
+
+  .expandable {
+    padding: 1px 0 0 3px !important;
+  }
+}
+
+.visible {
+  width: 300px;
+  display: block;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 0 5px;
+}
+
+.hideEmptyCheckbox {
+  flex: 1 1 auto;
+  position: relative;
+  color: #777;
+  label {
+    display: inline-block;
+    min-height: 20px;
+    max-width: 100%;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  input {
+    position: absolute;
+    margin: 4px 0 0 -20px;
+    padding: 0;
+    line-height: normal;
+  }
+}
+
+.closeButton {
+  span {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: .2;
+    cursor: pointer;
+    &:hover {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      filter: alpha(opacity=50);
+      opacity: .5;
+    }
+  }
+}

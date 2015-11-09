@@ -2,26 +2,47 @@ var $ = require('jquery');
 var Treex = require('./lib/Treex');
 var TreeView = require('./lib/TreeView');
 var Pager = require('./lib/Pager');
+var Attributes = require('./lib/Attributes');
 
-var styles = require('./index.less');
+function template() {
+  const TEMPLATE_PARTS = ['svg', 'pagination', 'sentence', 'attributes'];
 
-module.exports = $.fn.treexView = function (data) {
-  var $this = $(this);
+  var styles = require('./index.less');
   var template = $(require('./lib/template.dot')(styles));
 
-  $this.html(template);
+  var parts = {
+    html: template
+  };
+  for (var i = TEMPLATE_PARTS.length - 1; i >= 0; i--) {
+    var part = TEMPLATE_PARTS[i];
+    parts[part] = template.find(`[${part}]`).get(0);
+  }
 
-  var view = new TreeView(template.find('[svg]').get(0));
+  return parts;
+}
+
+module.exports = $.fn.treexView = function (data) {
+  var $this = $(this),
+    parts = template();
+
+  $this.html(parts.html);
+
+  var view = new TreeView(parts.svg);
 
   view.init(Treex.Document.fromJSON(data));
 
-  var pager = new Pager(template.find('[pagination]').get(0));
+  var pager = new Pager(parts.pagination);
   pager.init(view);
 
+  var attributes = new Attributes(parts.attributes);
   view.onNodeSelect(function (node) {
-    console.log(node);
+    attributes.show(node);
   });
 
-  view.description(template.find('[sentence]').get(0));
+  attributes.onClose(() => {
+    view.deselectNode(true /* suppress event */)
+  });
+
+  view.description(parts.sentence);
   view.drawBundle();
 };

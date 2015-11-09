@@ -1,0 +1,20 @@
+<div class="{{= it.controls}}">
+  <div class="{{= it.hideEmptyCheckbox}}">
+    <label>
+      <input type="checkbox" name="hide-empty" checked="checked" />
+      Hide empty attributes
+    </label>
+  </div>
+  <div class="{{= it.closeButton}}">
+    <span close>&times;</span>
+  </div>
+</div>
+<div class="{{= it.table}}">
+  <table>
+    <colgroup>
+      <col>
+      <col style="width:100%">
+    </colgroup>
+    <tbody table></tbody>
+  </table>
+</div>
