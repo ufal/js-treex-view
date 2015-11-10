@@ -14,6 +14,7 @@ lib-cov
 
 .idea
 dist
+electron
 
 # node-waf configuration
 .lock-wscript

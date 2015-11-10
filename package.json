@@ -4,8 +4,8 @@
   "description": "Javascript library for visualizing Treex files",
   "main": "index.js",
   "scripts": {
-    "clean-dist": "rm -rf dist dist.*",
-    "copy-static": "mkdir -p dist && cp -R *.md *.json test dist/",
+    "clean-dist": "rm -rf dist dist.* electron",
+    "copy-static": "mkdir -p dist && mkdir -p electron && cp -R *.md *.json test dist/ && cp -R app/* electron",
     "prebuild": "npm run clean-dist && npm run copy-static",
     "build": "webpack -p --devtool source-map",
     "start": "webpack-dev-server --debug --hot --inline --colors --display-error-details --display-cached",
@@ -25,22 +25,26 @@
   "devDependencies": {
     "autopolyfiller-loader": "^0.3.3",
     "autoprefixer-loader": "^3.1.0",
-    "babel-core": "^6.1.2",
-    "babel-loader": "^5.3.2",
+    "babel-core": "^5.0.0",
+    "babel-loader": "^5.3.3",
     "css-loader": "^0.20.2",
     "d3": "^3.5.6",
     "dot-loader": "^0.1.1",
+    "electron-prebuilt": "^0.34.3",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^2",
+    "jquery": "^2.1.4",
     "json-loader": "^0.5.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
+    "minimist": "^1.2.0",
     "mversion": "^1.10.1",
     "postcss-loader": "^0.7.0",
     "postcss-local-scope": "0.0.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
-    "webpack-merge": "^0.2.0"
+    "webpack-merge": "^0.2.0",
+    "webpack-target-electron-renderer": "^0.1.1"
   }
 }

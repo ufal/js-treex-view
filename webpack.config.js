@@ -1,15 +1,10 @@
 var path = require('path');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 
-module.exports = {
-  entry: "./index.js",
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'js-treex-view.js'
-  },
-  externals: {
-    jquery: 'jQuery'
-  },
+var common = {
   module: {
     postLoaders: [{
       test: /\.js$/,
@@ -25,11 +20,40 @@ module.exports = {
     ]
   },
   // Provide the Local Scope plugin to postcss-loader:
-  postcss: [ require('postcss-local-scope') ],
+  postcss: [ require('postcss-local-scope') ]
+};
+
+var jqueryPlugin = merge(common, {
+  entry: "./index.js",
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'js-treex-view.js'
+  },
+  externals: {
+    jquery: 'jQuery'
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
       inject: 'head'
     })
   ]
-};
+});
+
+var electronApp = merge(common, {
+  entry: ['./app/index.js'],
+  output: {
+    path: path.join(__dirname, 'electron'),
+    filename: 'index.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'app/index.html'),
+      inject: false
+    })
+  ]
+});
+
+electronApp.target = webpackTargetElectronRenderer(electronApp);
+
+module.exports = [jqueryPlugin, electronApp];
