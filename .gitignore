@@ -13,6 +13,7 @@ pids
 lib-cov
 
 .idea
+dist
 
 # node-waf configuration
 .lock-wscript

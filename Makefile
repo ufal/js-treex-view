@@ -1,14 +1,22 @@
 .PHONY: build
 
+build:
+	@npm run build
+
 install:
 	@npm install
-
-build:
-	@rm -rf dist
-	@./node_modules/.bin/webpack -p --progress --colors --devtool source-map
 
 run:
 	@echo "**************************************************"
 	@echo "* open http://localhost:8080/webpack-dev-server/ *"
 	@echo "**************************************************"
-	@./node_modules/.bin/webpack-dev-server --progress --debug --colors --devtool eval --hot --inline
+	@npm start
+
+release:
+	@./node_modules/.bin/mversion patch
+
+release-minor:
+	@./node_modules/.bin/mversion minor
+
+release-major:
+	@./node_modules/.bin/mversion major

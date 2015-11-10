@@ -20,8 +20,8 @@ module.exports = {
     loaders: [
       {test: /\.less/, loader: 'style!css?localIdentName=_[hash:base64:5]!postcss-loader!autoprefixer!less'},
       {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
-      {test: /\.dot/, loader: 'dot-loader'},
-      {test: /\.html/, loader: 'html'}
+      {test: /\.json/, loader: 'json-loader'},
+      {test: /\.dot/, loader: 'dot-loader'}
     ]
   },
   // Provide the Local Scope plugin to postcss-loader:

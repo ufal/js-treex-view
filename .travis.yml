@@ -1,0 +1,23 @@
+language: node_js
+sudo: false
+node_js: '0.11'
+branches:
+  except:
+  - releases
+  - gh-pages
+before_deploy: bash ./ci/build_release.sh
+deploy:
+- provider: script
+  script: bash ./ci/push_build.sh
+  skip_cleanup: true
+  on:
+    repo: ufal/js-treex-view
+    all_branches: true
+    condition: -n "$TRAVIS_TAG" || "$TRAVIS_BRANCH" = "master"
+cache:
+  directories:
+  - node_modules
+env:
+  global:
+  - NODE_ENV=travis
+  - secure: KBhdL6862ADcva0yupNBquWmc/zs7XQeXsXK8KFC9o8TklGAXQ9Tv3hTk4xvN5/SMjBLJyiGuvbYntK6kyu3/yDWmoBuBaIpl8UGTDN+eIK1kyNQWdtLztOXVhm5l3cZt4dZsZ0oSnFJD0mRKG8IsE/e3ENdLX8hEzyqmgOiZYYaGVgJ192tOWk6+zHE9Ez89iSXLxjegQThGkL4EstFWXO0pWnpWTkMDy3b7RQw2i5MkRYns2jJ9+mY74lgzFkbXSlt0hnu06rUmCvCyHZR99+WEU89+mkqk3tmKrJ8AMYj1V+aQ6JuUYTzE/cGXqohgZ9XSq0NW4ERf8uZmUn7bgw2GtRZGV45CI/WQvXBeamQANn1bh/yXqpeUhbpnBcsr76hE/02J99NQQvDSol2eYWs3+pj1Y48zsyqJEK0N8421MGTzHgFdN5qc7BDhObBgvLtuu6k8VUpg4kr7QKu8oO72j0glHuaJUvN+gLT2RIK8Q7X8ZtEeHcdnIHal2M9uh8ti/BJwullbiWeZzPy/8dzCzrQbFKSOzAeeaGm3iHsZr8KXtBhC4Z+y1jH/WLju0zHHbS/WPBQXjq6nIucgFgSeh+qmHIELwurkHdis17Cq7DP4PAbOprA5Tr0ccWjJHuNz0NePbghMwDPDpnlQpIvWvPHqWn8AJTrqShQEQg=
