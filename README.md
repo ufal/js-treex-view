@@ -1,6 +1,8 @@
 # Treex View
 Javascript library for visualizing Treex files
 
+[![Build Status](https://travis-ci.org/ufal/js-treex-view.svg?branch=master)](https://travis-ci.org/ufal/js-treex-view)
+
 # Usage
 
 1. Include JS file
