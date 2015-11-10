@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean-dist": "rm -rf dist dist.* electron",
-    "copy-static": "mkdir -p dist && mkdir -p electron && cp -R *.md *.json test dist/ && cp -R app/* electron",
+    "copy-static": "mkdir -p dist && cp -R *.md *.json test dist/",
     "prebuild": "npm run clean-dist && npm run copy-static",
     "build": "webpack -p --devtool source-map",
     "start": "webpack-dev-server --debug --hot --inline --colors --display-error-details --display-cached",

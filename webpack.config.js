@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
+var argv = require('minimist')(process.argv.slice(2));
 
 var common = {
   module: {
@@ -14,6 +15,7 @@ var common = {
     }],
     loaders: [
       {test: /\.less/, loader: 'style!css?localIdentName=_[hash:base64:5]!postcss-loader!autoprefixer!less'},
+      {test: /\.css/, loader: 'style!css!autoprefixer'},
       {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
       {test: /\.json/, loader: 'json-loader'},
       {test: /\.dot/, loader: 'dot-loader'}
@@ -56,4 +58,4 @@ var electronApp = merge(common, {
 
 electronApp.target = webpackTargetElectronRenderer(electronApp);
 
-module.exports = [jqueryPlugin, electronApp];
+module.exports = argv.debug ? jqueryPlugin : [jqueryPlugin, electronApp];

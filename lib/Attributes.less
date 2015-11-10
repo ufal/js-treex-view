@@ -14,11 +14,19 @@
     max-width: 100%;
     border-spacing: 0;
     border-collapse: collapse;
+    table-layout: auto;
+
     tbody > tr > td:first-child {
       font-weight: bold;
+      white-space: nowrap;
     }
     tbody > tr > td:nth-child(2) {
       font-weight: normal;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      white-space: pre-line;
+      width: 100%;
+      max-width: 150px;
     }
     tbody > tr > td {
       border: 1px solid #ddd;
