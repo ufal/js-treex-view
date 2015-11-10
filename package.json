@@ -1,6 +1,6 @@
 {
   "name": "js-treex-view",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Javascript library for visualizing Treex files",
   "main": "index.js",
   "scripts": {
