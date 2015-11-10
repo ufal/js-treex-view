@@ -9,7 +9,7 @@
 <div id="treex-view"></div>
 <script>
   $(function () {
-    $.ajax('/test/test.json').done(function (data) {
+    $.ajax('test/test.json').done(function (data) {
       $('#treex-view').treexView(data);
     });
   });
