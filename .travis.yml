@@ -5,7 +5,7 @@ branches:
   except:
   - releases
   - gh-pages
-before_deploy: bash ./ci/build_release.sh
+before_deploy: npm run build
 deploy:
 - provider: script
   script: bash ./ci/push_build.sh
