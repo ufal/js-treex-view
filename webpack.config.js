@@ -4,6 +4,13 @@ var merge = require('webpack-merge');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
 var argv = require('minimist')(process.argv.slice(2));
+var pgk = require('./package.json');
+
+var definePlugin = new webpack.DefinePlugin({
+  VERSION: JSON.stringify(pgk.version),
+  PRODUCTION: !!argv.p,
+  DEVELOPMENT: !!argv.debug
+});
 
 var common = {
   module: {
@@ -19,8 +26,9 @@ var common = {
       {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
       {test: /\.json/, loader: 'json-loader'},
       {test: /\.dot/, loader: 'dot-loader'}
-    ]
+    ],
   },
+  plugins: [definePlugin],
   // Provide the Local Scope plugin to postcss-loader:
   postcss: [ require('postcss-local-scope') ]
 };

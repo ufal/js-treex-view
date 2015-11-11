@@ -11,6 +11,8 @@ window.onload = function () {
 
   ipc.send('treex-view-ready');
 
-  var currentWindow = require('remote').getCurrentWindow();
-  currentWindow.openDevTools();
+  if (DEVELOPMENT) {
+    var currentWindow = require('remote').getCurrentWindow();
+    currentWindow.openDevTools();
+  }
 };
