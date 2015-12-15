@@ -26,7 +26,7 @@ var common = {
       {test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'},
       {test: /\.json/, loader: 'json-loader'},
       {test: /\.dot/, loader: 'dot-loader'}
-    ],
+    ]
   },
   plugins: [definePlugin],
   // Provide the Local Scope plugin to postcss-loader:
@@ -36,11 +36,24 @@ var common = {
 var jqueryPlugin = merge(common, {
   entry: "./index.js",
   output: {
+    library: 'js-treex-view',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
     path: path.join(__dirname, 'dist'),
     filename: 'js-treex-view.js'
   },
+  resolve: {
+    alias: {
+      jQuery: 'jquery'
+    }
+  },
   externals: {
-    jquery: 'jQuery'
+    jquery: {
+      root: 'jQuery',
+      amd: 'jquery',
+      commonjs: 'jquery',
+      commonjs2: 'jquery'
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
