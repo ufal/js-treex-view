@@ -33,7 +33,7 @@
     "electron-prebuilt": "^0.34.3",
     "html-loader": "^0.3.0",
     "html-webpack-plugin": "^2",
-    "jquery": "^2.1.4",
+    "jquery": "^3.0.0",
     "json-loader": "^0.5.3",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
